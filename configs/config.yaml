@@ -1,0 +1,186 @@
+# 
+data:
+  type: small          # یا medium یا large
+  base_dir: data/generated
+  test_type: test_xlarge  #st_medium, test_large
+objective:
+  mode: weighted_sum
+  response_time_weight: 1.0
+  platform_reliability_weight: 0.0
+  service_reliability_weight: 0.0
+  normalize_rt: true
+  rt_ref: ga_baseline
+seed: 0
+decoder_shaping:
+  alpha_net: 0.5
+  lambda_delay: 1.0
+  sim_weight: 0.1
+  beta_crowd: 0.05
+  crowd_use_util: true
+  crowd_gamma: 1.5
+separate_eval_decoder_shaping: false
+eval_decoder_shaping:
+  alpha_net: 0.0
+  lambda_delay: 1.0
+  sim_weight: 0.1
+  beta_crowd: 0.0
+  crowd_use_util: true
+  crowd_gamma: 1.5
+use_datasize_feature: false
+allow_fallback_train: true
+allow_fallback_eval: true
+cpu_policy_batch_size: 4
+use_ga_baseline_for_policy: true
+policy_cost_mode: response_time
+normalize_advantage: true
+resume_from_checkpoint: false
+init_entropy: 0.02
+final_entropy: 0.0
+grad_clip_norm: 1.0
+decoder_lr_mult: 10.0
+freeze_encoders_epochs: 5
+model:
+
+  small:
+    num_epochs: 50
+    num_samples: 75
+    num_test_sample: 100
+    num_layers: 4
+    gpu_hidden_dim: 32
+    device: auto
+    cpu_hidden_dim: 32
+    charnum_service: 15
+    charnum_s: 2
+    charnum_n: 2
+    charnum_se: 30
+    charnum_ne: 196
+    charnum_node: 14
+    charnum_component: 8
+    charnum_user: 15
+    charnum_helper: 8
+    node_edge_feature_dim: 2
+    component_edge_feature_dim: 1
+    n_heads: 4
+    w_m: 0.1
+    w_d: 0.1
+    batch_size: 64
+    n_encode_layers: 4
+    n_decode_layers: 4
+    total_nodes: 37
+    dataloader_num_workers: 0
+
+
+  medium:
+    num_epochs: 50
+    num_samples: 128
+    num_test_sample: 100 
+    num_layers: 4
+    gpu_hidden_dim: 32
+    device: auto
+    cpu_hidden_dim: 8
+    charnum_service: 50
+    charnum_s: 2
+    charnum_n: 2
+    charnum_se: 36
+    charnum_ne: 500
+    charnum_node: 100
+    charnum_component: 8
+    charnum_user: 50
+    charnum_helper: 50
+    node_edge_feature_dim: 2
+    component_edge_feature_dim: 1
+    n_heads: 4
+    w_m: 0.1
+    w_d: 0.1
+    batch_size: 64
+    n_encode_layers: 4
+    n_decode_layers: 4
+    total_nodes: 200
+    dataloader_num_workers: 0
+
+
+  large:
+    num_epochs: 30
+    num_samples: 50
+    num_test_sample: 200 
+    num_layers: 4
+    gpu_hidden_dim: 32
+    device: auto
+    cpu_hidden_dim: 8
+    charnum_service: 100
+    charnum_s: 2
+    charnum_n: 2
+    charnum_se: 36
+    charnum_ne: 500
+    charnum_node: 200
+    charnum_component: 8
+    charnum_user: 100
+    charnum_helper: 100
+    node_edge_feature_dim: 2
+    component_edge_feature_dim: 1
+    n_heads: 4
+    w_m: 0.1
+    w_d: 0.1
+    batch_size: 64
+    n_encode_layers: 4
+    n_decode_layers: 4
+    total_nodes: 400
+    dataloader_num_workers: 0
+
+
+  xlarge:
+    num_epochs: 512
+    num_samples: 512
+    num_test_sample: 200 
+    num_layers: 4
+    gpu_hidden_dim: 128
+    device: auto
+    cpu_hidden_dim: 32
+    charnum_service: 75
+    charnum_s: 2
+    charnum_n: 2
+    charnum_se: 36
+    charnum_ne: 500
+    charnum_node: 145
+    charnum_component: 8
+    charnum_user: 75
+    charnum_helper: 75
+    node_edge_feature_dim: 2
+    component_edge_feature_dim: 1
+    n_heads: 4
+    w_m: 0.1
+    w_d: 0.1
+    batch_size: 64
+    n_encode_layers: 4
+    n_decode_layers: 4
+    total_nodes: 295
+    dataloader_num_workers: 0
+
+
+  xxlarge:
+    num_epochs: 512
+    num_samples: 512
+    num_test_sample: 200 
+    num_layers: 4
+    gpu_hidden_dim: 128
+    device: auto
+    cpu_hidden_dim: 32
+    charnum_service: 100
+    charnum_s: 2
+    charnum_n: 2
+    charnum_se: 36
+    charnum_ne: 500
+    charnum_node: 200
+    charnum_component: 8
+    charnum_user: 100
+    charnum_helper: 100
+    node_edge_feature_dim: 2
+    component_edge_feature_dim: 1
+    n_heads: 4
+    w_m: 0.1
+    w_d: 0.1
+    batch_size: 64
+    n_encode_layers: 4
+    n_decode_layers: 4
+    total_nodes: 400
+    dataloader_num_workers: 0
