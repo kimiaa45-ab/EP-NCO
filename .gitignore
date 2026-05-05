@@ -1,5 +1,6 @@
 data/
 *.pt
+*.pth
 __pycache__/
 *.pyc
 .DS_Store
